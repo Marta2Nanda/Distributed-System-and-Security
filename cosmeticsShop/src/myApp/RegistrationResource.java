@@ -24,7 +24,7 @@ public class RegistrationResource {
 		UsersTable user = new UsersTable();
 		user.setClientId(clientId);
 		registrationDao.registerUser(user);
-		(servletResponse).sendRedirect("http://localhost:8080/A00248119hmacProject/welcome.html");
+		(servletResponse).sendRedirect("http://localhost:8080/cosmeticsShop/welcome.html");
 		
 	}
 	
