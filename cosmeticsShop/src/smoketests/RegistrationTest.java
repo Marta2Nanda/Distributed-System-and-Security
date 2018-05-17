@@ -3,6 +3,8 @@ package smoketests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.sql.SQLException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +18,7 @@ public class RegistrationTest {
 	private String webURL;
 	private WebDriver driver;
 	private final String clientId= "TestUser";
+	private final String duplicateClientId= "Marta";
 	private StringBuffer verificationErrors = new StringBuffer();
 	
 	@Before 
@@ -26,7 +29,7 @@ public class RegistrationTest {
 	}
 	
 	@Test
-	public void testRegistration() throws Exception {
+	public void testCorrectRegistration() throws Exception {
 		try {
 			driver.get(webURL);
 			Thread.sleep(3000);
@@ -46,6 +49,21 @@ public class RegistrationTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test(expected=SQLException.class)
+	public void testDuplicateNameRegistration() throws Exception {
+		try {
+			driver.get(webURL);
+			Thread.sleep(3000);
+			driver.findElement(By.name("clientId")).clear();
+			driver.findElement(By.name("clientId")).sendKeys(duplicateClientId);
+			driver.findElement(By.name("registerButton")).click();
+
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	@After
 	public void tearDown() {
