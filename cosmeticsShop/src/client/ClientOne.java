@@ -126,7 +126,7 @@ public class ClientOne {
 	}
 
 	private static URI getBaseURI() {
-		return UriBuilder.fromUri("http://localhost:8080/A00248119hmacProject").build();
+		return UriBuilder.fromUri("http://localhost:8080/cosmeticsShop").build();
 	}
 	
     public static int userChoice() {
