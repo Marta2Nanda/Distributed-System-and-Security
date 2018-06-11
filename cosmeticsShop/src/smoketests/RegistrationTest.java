@@ -53,16 +53,12 @@ public class RegistrationTest {
 	
 	@Test(expected=SQLException.class)
 	public void testDuplicateNameRegistration() throws SQLException  {
-//			try{
+
 				driver.get(webURL);
-//				Thread.sleep(3000);
 				driver.findElement(By.name("clientId")).clear();
 				driver.findElement(By.name("clientId")).sendKeys(duplicateClientId);
 				driver.findElement(By.name("registerButton")).click();
 				throw new SQLException();
-/*			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}*/
 		
 	}
 	
